@@ -7,20 +7,20 @@ class Instructor::SectionsController < ApplicationController
   end
 
   def create
-    @section = @course.sections.create(section_params)
+    @section = current_course.sections.create(section_params)
     redirect_to instructor_course_path(current_course)
   end
 
   private
 
   def require_authorized_for_current_course
-    if current_couse.user != current_user
-      render plain: "Unsuthorized", status: :unauthorized
+    if current_course.user != current_user
+      render plain: "Unauthorized", status: :unauthorized
     end
   end
 
   helper_method :current_course
-  def current_couse
+  def current_course
     @current_course ||= Course.find(params[:course_id])
   end
 
