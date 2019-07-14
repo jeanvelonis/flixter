@@ -77,4 +77,6 @@ gem 'carrierwave-aws'
 gem 'figaro'
 gem 'fog-aws'
 gem 'stripe'
+gem 'ranked-model'
+
 
